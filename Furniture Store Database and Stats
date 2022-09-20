@@ -1,0 +1,37 @@
+CREATE TABLE store (id INTEGER PRIMARY KEY, item text, location text, price integer, popularity integer);
+
+INSERT INTO store VALUES
+(1, "kitchen table", "kitchen", 499.99, 90),
+(2, "sectional", "living room", 899.99, 100),
+(3, "chair", "office", 259.99, 65),
+(4, "coffee table", "living room", 199.99, 32),
+(5, "shelves", "storage", 69.99, 85),
+(6, "racks", "storage", 49.99, 42),
+(7, "island", "kitchen", 129.99, 48),
+(8, "desk", "office", 679.99, 92),
+(9, "bed frame", "bedroom", 1249.99, 88),
+(10, "end tables", "bedroom", 299.99, 66),
+(11, "side tables", "living room", 159.99, 53),
+(12, "chaise", "bedroom", 675.99, 21),
+(13, "barstool", "kitchen", 89.99, 94),
+(14, "rug", "living room", 379.99, 89),
+(15, "tv stand", "living room", 449.99, 44);
+
+--What is the most expensive furniture in dataset?
+SELECT * FROM store ORDER BY price desc;
+
+--Products greater than $675.00, highest to lowest price?
+SELECT item, price FROM store WHERE price > 675.00 ORDER BY price desc;
+
+--List items in order of location with their popularity rating
+SELECT item, location, popularity FROM store ORDER BY location;
+
+--what are the most 3 popular items? 
+SELECT item, price, popularity FROM store ORDER BY popularity desc
+limit 3; 
+
+--what is the avg price of items in living room location? 
+SELECT AVG(price) "avg living room price" FROM store WHERE location="living room";
+
+--what is the avg price of items in bedroom location?
+SELECT AVG(price) "avg bedroom price" FROM store WHERE location ="bedroom";
